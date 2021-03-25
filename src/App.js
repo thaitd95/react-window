@@ -1,5 +1,5 @@
 import "./App.css";
-import ReactWindow from "./app";
+import ReactWindow from "./app/components/ReactWindow";
 
 function App() {
   return (

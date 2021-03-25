@@ -1,6 +1,5 @@
-import { useMemo } from "react";
 import faker, { Company, Address } from "Faker";
-import Virtualize from "./components/Virtualize";
+import Virtualize from "../Virtualize";
 faker.locale = "en";
 
 const ReactWindow = () => {
