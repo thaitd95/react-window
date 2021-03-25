@@ -9,7 +9,7 @@ const StyledScroll = styled(PerfectScrollbar)`
 const Virtualize = ({ data, viewHeight, itemHeight }) => {
   const totalItemOnView = Math.floor(viewHeight / itemHeight);
   const [renderList, setRenderList] = useState([]);
-  const header = ["Company Name", "Street", "City", "Country"];
+  const [top, setTop] = useState(0);
 
   useEffect(() => {
     const initList = data.filter((item, index) => index < totalItemOnView);
@@ -23,6 +23,7 @@ const Virtualize = ({ data, viewHeight, itemHeight }) => {
         index < totalItemOnView + addItem && index > addItem - 1
     );
     setRenderList(newList);
+    setTop(scrollTop);
   };
 
   return (
@@ -32,10 +33,12 @@ const Virtualize = ({ data, viewHeight, itemHeight }) => {
           calculating(container.scrollTop);
         }}
       >
-        <div style={{height: `${data.length * itemHeight}px`} }>
-          {renderList.map((item, index) => (
+      <div style={{ height: `${data.length * itemHeight}px`, position: 'relative' }}>
+        <div style={{ position: 'absolute', top: `${top}px` }}>
+        {renderList.map((item, index) => (
             <div key={index} style={{height: `${itemHeight}px`}}>{ item.name}</div>
           ))}
+        </div>
         </div>
       </StyledScroll>
   );

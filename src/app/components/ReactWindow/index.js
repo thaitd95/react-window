@@ -3,7 +3,7 @@ import Virtualize from "../Virtualize";
 faker.locale = "en";
 
 const ReactWindow = () => {
-  const number = 50;
+  const number = 1000000;
   const array = new Array(number).fill();
   const generatedList = () =>
     array.map(() => ({
