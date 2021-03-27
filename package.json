@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "antd": "^4.14.1",
     "react-custom-scrollbars": "^4.2.1"
   }
 }

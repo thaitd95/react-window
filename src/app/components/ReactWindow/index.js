@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import faker, {
   Company,
   Address,
@@ -10,28 +11,24 @@ import faker, {
 import Virtualize from "../Virtualize";
 faker.locale = "en";
 
-const ReactWindow = () => {
-  const number = 10000;
-  const array = new Array(number).fill();
-
-  const generatedList = () =>
-    array.map(() => ({
-      name: Company.companyName(),
-      bussiness: Company.bs(),
-      founder: Name.findName(),
-      manager: Name.findName(),
-      street: Address.streetAddress(),
-      city: Address.city(),
-      country: Address.ukCountry(),
-      zipCode: Address.zipCode(),
-      email: Internet.email(),
-      phone: PhoneNumber.phoneNumber(),
-      secondPhone: PhoneNumber.phoneNumber(),
-      website: Internet.domainName(),
-      slogen: Lorem.words(),
-      description: Lorem.sentence(),
-      image: Image.avatar(),
-    }));
+const ReactWindow = ({ record, height }) => {
+  const data = useMemo(() => new Array(Number(record)).fill().map(() => ({
+    name: Company.companyName(),
+    bussiness: Company.bs(),
+    founder: Name.findName(),
+    manager: Name.findName(),
+    street: Address.streetAddress(),
+    city: Address.city(),
+    country: Address.ukCountry(),
+    zipCode: Address.zipCode(),
+    email: Internet.email(),
+    phone: PhoneNumber.phoneNumber(),
+    secondPhone: PhoneNumber.phoneNumber(),
+    website: Internet.domainName(),
+    slogen: Lorem.words(),
+    description: Lorem.sentence(),
+    image: Image.avatar(),
+  })), [record]);
 
   const columns = [
     "Company Name",
@@ -53,9 +50,9 @@ const ReactWindow = () => {
 
   return (
     <Virtualize
-      data={generatedList()}
+      data={data}
       columns={columns}
-      viewHeight={500}
+      viewHeight={height}
       itemHeight={50}
     />
   );

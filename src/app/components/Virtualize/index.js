@@ -62,7 +62,7 @@ const Virtualize = ({ data, viewHeight, itemHeight, columns }) => {
 
   return (
     <StyledScroll
-      style={{ height: `${viewHeight}px`, width: "100vw" }}
+      style={{ height: `${viewHeight}px`, width: "100%" }}
       onScrollY={(container) => {
         calculating(container.scrollTop);
       }}

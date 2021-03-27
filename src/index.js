@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <React.StrictMode>
